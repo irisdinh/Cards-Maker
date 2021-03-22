@@ -1,18 +1,33 @@
-.rowComp {
-    margin: 1em;;
+/*design*/ 
+
+/*download*/
+
+/*home*/
+.deck {
+    margin: 1em;
+    align-items: center;
+    text-align: center;
+    align-content: center;
+    padding: 2em;
+    
 }
+
 .imageCard{
     width: 100%;
     height: 100%;    
 }
+
 .eachCard {
     display: flex;
     width: auto;
     height: 250px;   
 }
-.eachCard:hover{
-    opacity: 0.5;
-}
+/*library*/
+
+
+
+
+
 
 .navStyle {
     padding: 5px;
@@ -44,14 +59,7 @@
 .Home {
     background: black;
 }
-.deck {
-    margin: 1em;
-    align-items: center;
-    text-align: center;
-    align-content: center;
-    padding: 2em;
-    
-}
+
 li {
     color: white;
 }

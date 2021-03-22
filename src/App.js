@@ -15,7 +15,7 @@ function App() {
       <Menu/> 
       <Switch>
         <Route exact path="/" component={Home}/>
-        <Route exact path="/design" component={Design}/>
+        <Route exact path="/design/:name" component={Design}/>
         <Route exact path="/library" component={Library}/>
         <Route exact path="/download" component={Download}/>
       </Switch> 

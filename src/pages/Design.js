@@ -1,15 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
-import { Nav, NavDropdown, Navbar, Container, Alert } from 'react-bootstrap'
-import {Link, NavLink, Route} from 'react-router-dom'
+import { Dropdown, Nav, NavDropdown, Navbar, Container, Alert } from 'react-bootstrap'
+import {Link, useParams, NavLink, Route} from 'react-router-dom'
 import {Button, Row, Col, InputGroup, FormControl} from 'react-bootstrap'
+import styleReducer from './styleReducer'
+import Template from './template'
 
 const fontArray = ["Arial", "Times"]
 const fontSizeArray = [11,12,13]
 const colorArray = ["Black", "Blue", "Red"]
 const backgroundArray = ["Black", "Blue", "White"]
 
+
 function Design(){
+    const [data, dispatch] = useState()
+    const type = useParams().name
+
     return (
         <div> 
             <Row> 
@@ -60,14 +66,9 @@ function Design(){
                     </NavDropdown>
                 </Col>
                 <Col> 
-                    <Container className = "review">
-            
-                        <p> From Iris</p>
-                        <h5> Happy Birthday</h5>
-                        <p> </p>
-                        <p> To Claire</p>
-                        
-                    </Container>
+                    <Template> 
+
+                    </Template>
                             
                 </Col>
             </Row>

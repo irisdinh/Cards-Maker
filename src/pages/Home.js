@@ -3,8 +3,19 @@ import React from 'react'
 import {Row, Col, Card, CardDeck, CardImg, Image} from 'react-bootstrap'
 import Cat from "../image/IMG_3998.jpg"
 import './style.css';
+import {Link, useHistory, NavLink, Route, Router, useLocation} from 'react-router-dom'
+import Template from './template'
+import styleReducer from './styleReducer'
+
 function Home(){
     const type = ["Birthday", "Graduation", "Anniversary", "New Year"]
+    let history = useHistory();
+    function handleClick(props) {
+        const name = props.name
+        history.push(`/design/${name}`)
+        
+    }
+    
     return (
         <div className="Home">
             <div> 
@@ -43,13 +54,14 @@ function Home(){
                     <CardDeck className="deck">
                         {type.map((name) => 
                             <Card className="eachCard">
-                            <Image className="imageCard" src={Cat}/>
+                            <Image className="imageCard" src={Cat} onClick={()=> handleClick({name})}/>
                             <Card.Body className="cardBody">
                                 <Card.Title>
                                     <p> {name} </p>
                                 </Card.Title>
                             </Card.Body>
                             </Card>
+                            
                         )}    
                     </CardDeck>
                     </Col>

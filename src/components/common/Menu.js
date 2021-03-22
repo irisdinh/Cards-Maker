@@ -9,7 +9,7 @@ const routes = [
         label: 'Home'
     },
     {
-        href: '/design',
+        href: '/design/New',
         label: 'Design'
     },
     {
