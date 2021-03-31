@@ -1,75 +1,102 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useReducer } from 'react'
 import ReactDOM from 'react-dom'
-import { Dropdown, Nav, NavDropdown, Navbar, Container, Alert } from 'react-bootstrap'
+import { Dropdown, Nav, NavDropdown, Navbar, Container, Alert, Form } from 'react-bootstrap'
 import {Link, useParams, NavLink, Route} from 'react-router-dom'
-import {Button, Row, Col, InputGroup, FormControl} from 'react-bootstrap'
+import {Row, Col, InputGroup, FormControl} from 'react-bootstrap'
 import styleReducer from './styleReducer'
-import Template from './template'
+import Template from './Template'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { useSelector, useDispatch} from 'react-redux'
 
-const fontArray = ["Arial", "Times"]
-const fontSizeArray = [11,12,13]
-const colorArray = ["Black", "Blue", "Red"]
-const backgroundArray = ["Black", "Blue", "White"]
+const fontArray = ["Arial", "Times New Roman", "Georgia", "Verdana", "Lucida Console"]
+const fontSizeArray = [16,17,13,14,15]
+const colorArray = ["Black", "Blue", "Red", "Green", "Yellow", "White"]
+const backgroundArray = ["Black", "Blue", "White", "Green", "Red", "Yellow"]
 
+
+function SetAction(key) {
+    const action = {
+        type:'set',
+        key
+    }
+    
+    return action
+    
+}
+function UpdateAction(key, value) {
+    const action = {
+        type:'update',
+        key,
+        value
+    }
+    return action
+    
+}
 
 function Design(){
-    const [data, dispatch] = useState()
-    const type = useParams().name
+    const styleTemplate = useSelector((state) => state.style)
+    const dispatch = useDispatch()
+    const nameTemp = useParams().name
+
+    useEffect(() =>{
+        if (nameTemp != 'New') {
+            dispatch(SetAction(nameTemp))
+        }
+    }, [])
 
     return (
         <div> 
             <Row> 
-                <Col> 
-                    <p>
-                        Font
-                    </p>
-                    <NavDropdown className="navStyle">
-                        {fontArray.map(name =>
-                            <NavDropdown.Item>
-                            {name}
-                            </NavDropdown.Item>
-                        )
-                        }
-                    </NavDropdown>
-                    <p>
-                        Font Size
-                    </p>
-                    <NavDropdown className="navStyle">
-                        {fontSizeArray.map(name =>
-                            <NavDropdown.Item>
-                            {name}
-                            </NavDropdown.Item>
-                        )
-                        }
-                    </NavDropdown>
-                    <p>
-                        Color
-                    </p>
-                    <NavDropdown className="navStyle">
-                        {colorArray.map(name =>
-                            <NavDropdown.Item>
-                            {name}
-                            </NavDropdown.Item>
-                        )
-                        }
-                    </NavDropdown>
-                    <p>
-                        Background Color
-                    </p>
-                    <NavDropdown className="navStyle">
-                        {backgroundArray.map(name =>
-                            <NavDropdown.Item>
-                            {name}
-                            </NavDropdown.Item>
-                        )
-                        }
-                    </NavDropdown>
+                <Col > 
+                    <div className='selectStyle'>
+                    <Form.Group controlId = 'font'>
+                        <Form.Label style={{color:'White'}}> Font </Form.Label>
+                        <Form.Control as='select' 
+                            //value={font}
+                            onChange={(e) => dispatch(UpdateAction('font', e.target.value))}> 
+                            {fontArray.map(name =>
+                                <option>{name}</option>
+                            )}
+                        </Form.Control>
+                    </Form.Group>
+
+                    <Form.Group controlId = 'fontsize'>
+                        <Form.Label style={{color:'White'}}> Font Size</Form.Label>
+                        <Form.Control as='select'
+                            onChange={(e) => dispatch(UpdateAction('size', e.target.value))}> 
+                            {fontSizeArray.map(name =>
+                                <option>{name}</option>
+                            )}
+                        </Form.Control>
+                    </Form.Group>
+
+                    <Form.Group controlId = 'color'>
+                        <Form.Label style={{color:'White'}}> Color </Form.Label>
+                        <Form.Control as='select'
+                            onChange={(e) => dispatch(UpdateAction('color', e.target.value))}> 
+                            {colorArray.map(name =>
+                                <option>{name}</option>
+                            )}
+                        </Form.Control>
+                    </Form.Group>
+
+                    <Form.Group controlId = 'background'>
+                        <Form.Label style={{color:'White'}}> Background Color </Form.Label>
+                        <Form.Control as='select'
+                            onChange={(e) => dispatch(UpdateAction('background', e.target.value))}> 
+                            {backgroundArray.map(name =>
+                                <option>{name}</option>
+                            )}
+                        </Form.Control>
+                    </Form.Group>
+                    </div>
                 </Col>
                 <Col> 
-                    <Template> 
-
-                    </Template>
-                            
+                    <div className='template'> 
+                        <Template id='review' 
+                            type={nameTemp}> 
+                        </Template>
+                    </div>       
                 </Col>
             </Row>
             <Row>
@@ -79,7 +106,7 @@ function Design(){
                         Your name
                         </InputGroup.Text>
                     </InputGroup.Prepend>
-                    <FormControl> 
+                    <FormControl onChange={(e) => dispatch(UpdateAction('name', e.target.value))}> 
                     </FormControl>
                 </InputGroup>
                 <InputGroup className="formStyle">
@@ -88,7 +115,7 @@ function Design(){
                         Your receipt
                         </InputGroup.Text>
                     </InputGroup.Prepend>
-                    <FormControl> 
+                    <FormControl onChange={(e) => dispatch(UpdateAction('receipt', e.target.value))}> 
                     </FormControl>
                 </InputGroup>
                 <InputGroup className="formStyle">
@@ -97,7 +124,7 @@ function Design(){
                         Your word
                         </InputGroup.Text>
                     </InputGroup.Prepend>
-                    <FormControl> 
+                    <FormControl onChange={(e) => dispatch(UpdateAction('word', e.target.value))}> 
                     </FormControl>
                 </InputGroup>
             </Row>

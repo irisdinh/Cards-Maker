@@ -1,5 +1,43 @@
 /*design*/ 
+.template {
+    width: 100%;
+    height: 100%;
+    padding: 2em;
+    display: inline-block;
+    vertical-align: middle;
 
+}
+
+.formStyle {
+    padding: 1.5em;
+    margin-left: 10em;
+    margin-right: 10em;
+}
+
+.selectStyle {
+    padding: 2em;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+.buttonEnd{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.buttonStyle{
+    position: relative;
+    margin: 2em;
+    padding: 10px;
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    display: block;
+    border-radius: 15px;
+    border-color: gray;
+}
 /*download*/
 
 /*home*/
@@ -8,8 +46,7 @@
     align-items: center;
     text-align: center;
     align-content: center;
-    padding: 2em;
-    
+    padding: 1em;   
 }
 
 .imageCard{
@@ -22,40 +59,16 @@
     width: auto;
     height: 250px;   
 }
+
+
 /*library*/
-
-
-
-
-
 
 .navStyle {
     padding: 5px;
     margin: 5px;
 }
-.formStyle {
 
-    margin: 5px;
-    margin-left: 50px;
-    margin-right: 50px;
-}
-.buttonEnd{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
-.buttonStyle{
-    position: relative;
-    margin: 2em;
-    padding: 10px;
-    font-size: 20px;
-    background-color: black;
-    color: white;
-    display: block;
-    border-radius: 15px;
-    border-color: gray;
-}
+
 .Home {
     background: black;
 }
@@ -63,10 +76,14 @@
 li {
     color: white;
 }
-.review {
-    width: max-content;
-    height: 20em;
-    padding: 5px;
-    align-content: center;
-    background: coral;
+.reviewBox {
+    width: 50em;
+    height: 50em;
+    align-items: center;
+    
+}
+.Review {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 }

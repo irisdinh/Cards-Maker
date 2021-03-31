@@ -4,11 +4,16 @@ import {Row, Col, Card, CardDeck, CardImg, Image} from 'react-bootstrap'
 import Cat from "../image/IMG_3998.jpg"
 import './style.css';
 import {Link, useHistory, NavLink, Route, Router, useLocation} from 'react-router-dom'
-import Template from './template'
+import Template from './Template'
 import styleReducer from './styleReducer'
+import Graduation from "../image/graduation.png"
+import Birthday from "../image/birthday.png"
+import Anniversary from "../image/anniversary.png"
+import NewYear from "../image/newyear.png"
 
 function Home(){
-    const type = ["Birthday", "Graduation", "Anniversary", "New Year"]
+    const imageList = [Birthday, Graduation, Anniversary, NewYear]
+    const type = ["Birthday", "Graduation", "Anniversary", "NewYear"]
     let history = useHistory();
     function handleClick(props) {
         const name = props.name
@@ -22,7 +27,7 @@ function Home(){
                 <Row className="rowComp"> 
                     <Col> 
                         <div>
-                            <h5> In this web, we help making 
+                            <h5 style={{color:'White'}}> In this web, we help making 
                                 cards for your friends, families,
                                 and loved ones
                             </h5>
@@ -30,8 +35,8 @@ function Home(){
                     </Col>
                     <Col>
                         <div>
-                            <p>You can design the card with</p>
-                            <ul>
+                            <p style={{color:'White'}}>You can design the card with</p>
+                            <ul style={{listStyleType: 'none'}}>
                                 <li>
                                    Font 
                                 </li>
@@ -50,11 +55,11 @@ function Home(){
                 </Row>
                 <Row className="deck">
                     <Col>
-                    <h5> Choose your occassion</h5>
+                    <h5 style={{color:'White'}}> Choose your occassion</h5>
                     <CardDeck className="deck">
                         {type.map((name) => 
                             <Card className="eachCard">
-                            <Image className="imageCard" src={Cat} onClick={()=> handleClick({name})}/>
+                            <Image className="imageCard" src={imageList[type.indexOf(name)]} onClick={()=> handleClick({name})}/>
                             <Card.Body className="cardBody">
                                 <Card.Title>
                                     <p> {name} </p>

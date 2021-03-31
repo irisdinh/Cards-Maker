@@ -1,75 +1,106 @@
+import {combineReducers} from 'redux'
+
 const defaultStyles = {
     type1: {
         id: 'Birthday',
-        color: 'pink',
-        font: 'aria',
-        size: '14',
-        backgound: 'yellow',
+        color: 'yellow',
+        font: 'Arial',
+        size: 14,
+        background: 'green',
         name:'',
         receipt:'',
-        wish:''
+        wish:'',
+        image:''
     }, 
     type2: {
         id: 'Graduation',
         color: 'yellow',
         font: 'aria',
-        size: '14',
-        backgound: 'blue',
+        size: 14,
+        background: 'blue',
         name:'',
         receipt:'',
-        wish:''
+        wish:'',
+        image:''
     }, 
     type3: {
         id: 'Anniversary',
         color: 'red',
         font: 'aria',
-        size: '14',
-        backgound: 'white',
+        size: 14,
+        background: 'white',
         name:'',
         receipt:'',
-        wish:''
+        wish:'',
+        image:''
     }, 
     type4: {
-        id: 'New Year',
+        id: 'NewYear',
         color: 'black',
         font: 'aria',
-        size: '14',
-        backgound: 'yellow',
+        size: 14,
+        background: 'yellow',
         name:'',
         receipt:'',
-        wish:''
+        wish:'',
+        image:''
     }, 
 }
 const initialStyle = {
     id: '',
-    color: 'black',
-    font: 'aria',
-    size: '14',
-    backgound: 'white',
+    color: 'white',
+    font: 'Arial',
+    size: 14,
+    background: 'salmon',
     name:'',
     receipt:'',
-    wish:''
+    wish:'',
+    image:''
 }
-function newCard(state){
-    return {
-        ...state
+const reducer = combineReducers(
+    {
+        style: styleReducer
     }
-}
-function updateCard(state){
-    return {
-        ...state
-    }
-}
-function reducer(state, action) {
-    switch (action.type) {
-        case 'new':{
-            return newCard(state)
+)
+
+function setCard(state, action){
+    const name = Object.keys(defaultStyles)
+    
+    name.map(tempt => {
+        const current = defaultStyles.[tempt].id
+        console.log(current)
+        console.log(action.key)
+        console.log()
+        if (action.key == current) {
+            
+            state=defaultStyles.[tempt]
+            
         }
+    })
+    
+    return {
+        ...state
+    }
+}
+
+function updateCard(state, action){
+ 
+    return {
+        ...state,
+        [action.key]: action.value
+    }
+}
+function styleReducer(state = initialStyle, action) {
+    switch (action.type) {
         case 'update':{
-            return updateCard(state)
+            return updateCard(state,action)
+        }
+        case 'set':{
+            return setCard(state, action)
         }
         default:
-            return initialStyle
+            return state
         
     }
 }
+export default reducer
