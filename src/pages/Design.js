@@ -9,10 +9,10 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { useSelector, useDispatch} from 'react-redux'
 
 const fontArray = ["Arial", "Times New Roman", "Georgia", "Verdana", "Lucida Console"]
-const fontSizeArray = [16,17,13,14,15]
+const fontSizeArray = [14,15,16,17,18]
 const colorArray = ["Black", "Blue", "Red", "Green", "Yellow", "White"]
 const backgroundArray = ["Black", "Blue", "White", "Green", "Red", "Yellow"]
-
+const fontStyleArray= ["Normal", "Italic", "Oblique"]
 
 function SetAction(key) {
     const action = {
@@ -65,6 +65,16 @@ function Design(){
                         <Form.Control as='select'
                             onChange={(e) => dispatch(UpdateAction('size', e.target.value))}> 
                             {fontSizeArray.map(name =>
+                                <option>{name}</option>
+                            )}
+                        </Form.Control>
+                    </Form.Group>
+
+                    <Form.Group controlId = 'fontstyle'>
+                        <Form.Label style={{color:'White'}}> Font Style</Form.Label>
+                        <Form.Control as='select'
+                            onChange={(e) => dispatch(UpdateAction('fontstyle', e.target.value))}> 
+                            {fontStyleArray.map(name =>
                                 <option>{name}</option>
                             )}
                         </Form.Control>

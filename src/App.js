@@ -20,6 +20,7 @@ function App() {
         <Route exact path="/download" component={Download}/>
       </Switch> 
       <Footer/>
+      
     </div>
 
   );

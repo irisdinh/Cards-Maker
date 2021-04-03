@@ -8,11 +8,15 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import reducer from './pages/styleReducer'
+import firebase from "firebase/app";
+import "firebase/auth";
 
 const store = createStore(reducer)
 
 ReactDOM.render(
+  
   <React.StrictMode>
+    
     <Provider store={store}> 
       <Router>
         <App/>

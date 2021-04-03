@@ -1,7 +1,6 @@
 
 import React from 'react'
 import {Row, Col, Card, CardDeck, CardImg, Image} from 'react-bootstrap'
-import Cat from "../image/IMG_3998.jpg"
 import './style.css';
 import {Link, useHistory, NavLink, Route, Router, useLocation} from 'react-router-dom'
 import Template from './Template'
@@ -17,8 +16,7 @@ function Home(){
     let history = useHistory();
     function handleClick(props) {
         const name = props.name
-        history.push(`/design/${name}`)
-        
+        history.push(`/design/${name}`)    
     }
     
     return (
@@ -45,6 +43,9 @@ function Home(){
                                 </li>
                                 <li>
                                     Font Size
+                                </li>
+                                <li>
+                                    Background Color
                                 </li>
                                 <li>
                                     Your wishes

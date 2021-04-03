@@ -1,11 +1,12 @@
 /*design*/ 
-.template {
-    width: 100%;
-    height: 100%;
-    padding: 2em;
+#template {
+    margin-top: 1em;
+    width: 30em;
+    height: 30em;
+    padding: 1em;
     display: inline-block;
+    justify-content: center;
     vertical-align: middle;
-
 }
 
 .formStyle {
@@ -15,9 +16,8 @@
 }
 
 .selectStyle {
-    padding: 2em;
-    margin-left: 2em;
-    margin-right: 2em;
+    padding: 1em;
+    margin-left: 1em;
 }
 
 .buttonEnd{
@@ -39,6 +39,23 @@
     border-color: gray;
 }
 /*download*/
+.reviewBox {
+    width: 30em;
+    height: 30em;
+    align-items: center;
+    
+}
+
+.Review {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.reviewSide {
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
 
 /*home*/
 .deck {
@@ -63,6 +80,13 @@
 
 /*library*/
 
+
+/*template*/
+.from{
+    margin-top: 10em;
+}
+
+
 .navStyle {
     padding: 5px;
     margin: 5px;
@@ -76,14 +100,4 @@
 li {
     color: white;
 }
-.reviewBox {
-    width: 50em;
-    height: 50em;
-    align-items: center;
-    
-}
-.Review {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-}
+
