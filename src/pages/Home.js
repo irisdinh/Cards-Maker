@@ -4,7 +4,7 @@ import {Row, Col, Card, CardDeck, CardImg, Image} from 'react-bootstrap'
 import './style.css';
 import {Link, useHistory, NavLink, Route, Router, useLocation} from 'react-router-dom'
 import Template from './Template'
-import styleReducer from './styleReducer'
+import styleReducer from '../reducer/styleReducer'
 import Graduation from "../image/graduation.png"
 import Birthday from "../image/birthday.png"
 import Anniversary from "../image/anniversary.png"
@@ -35,6 +35,9 @@ function Home(){
                         <div>
                             <p style={{color:'White'}}>You can design the card with</p>
                             <ul style={{listStyleType: 'none'}}>
+                                <li>
+                                   Theme
+                                </li>
                                 <li>
                                    Font 
                                 </li>

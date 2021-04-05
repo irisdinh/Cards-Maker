@@ -79,7 +79,13 @@
 
 
 /*library*/
+.cardBox {
+    display: inline-block;
+}
 
+.card{
+    width: 100%;
+}
 
 /*template*/
 .from{

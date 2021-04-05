@@ -1,13 +1,14 @@
 import {combineReducers} from 'redux'
 
+
 const defaultStyles = {
     type1: {
         id: 'Birthday',
-        color: 'yellow',
+        color: 'Yellow',
         font: 'Lucida Console',
         size: 14,
-        fontstyle: 'italic', 
-        background: 'green',
+        fontstyle: 'Italic', 
+        background: 'Green',
         name:'',
         receipt:'',
         wish:'',
@@ -15,11 +16,11 @@ const defaultStyles = {
     }, 
     type2: {
         id: 'Graduation',
-        color: 'yellow',
+        color: 'Yellow',
         font: 'Times New Roman',
-        size: 14,
-        fontstyle: 'oblique', 
-        background: 'blue',
+        size: 15,
+        fontstyle: 'Oblique', 
+        background: 'Blue',
         name:'',
         receipt:'',
         wish:'',
@@ -27,11 +28,11 @@ const defaultStyles = {
     }, 
     type3: {
         id: 'Anniversary',
-        color: 'red',
+        color: 'Red',
         font: 'Georgia',
-        size: 14,
-        fontstyle: 'italic', 
-        background: 'white',
+        size: 16,
+        fontstyle: 'Italic', 
+        background: 'White',
         name:'',
         receipt:'',
         wish:'',
@@ -39,11 +40,11 @@ const defaultStyles = {
     }, 
     type4: {
         id: 'NewYear',
-        color: 'black',
+        color: 'Black',
         font: 'Verdana',
         size: 14,
-        fontstyle: 'normal', 
-        background: 'yellow',
+        fontstyle: 'Normal', 
+        background: 'Yellow',
         name:'',
         receipt:'',
         wish:'',
@@ -52,11 +53,11 @@ const defaultStyles = {
 }
 const initialStyle = {
     id: '',
-    color: 'white',
+    color: 'White',
     font: 'Arial',
-    size: 14,
-    fontstyle: 'normal', 
-    background: 'salmon',
+    size: 15,
+    fontstyle: 'Normal', 
+    background: 'Salmon',
     name:'',
     receipt:'',
     wish:'',
@@ -67,19 +68,16 @@ const reducer = combineReducers(
         style: styleReducer
     }
 )
+function getCard (state, action){
+
+}
 
 function setCard(state, action){
     const name = Object.keys(defaultStyles)
-    
     name.map(tempt => {
-        const current = defaultStyles.[tempt].id
-        console.log(current)
-        console.log(action.key)
-        console.log()
+        const current = defaultStyles[tempt].id
         if (action.key == current) {
-            
-            state=defaultStyles.[tempt]
-            
+            state=defaultStyles[tempt]
         }
     })
     
@@ -102,6 +100,9 @@ function styleReducer(state = initialStyle, action) {
         }
         case 'set':{
             return setCard(state, action)
+        }
+        case 'get':{
+            return getCard(state, action)
         }
         default:
             return state
