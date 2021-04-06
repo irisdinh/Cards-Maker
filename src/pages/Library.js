@@ -20,19 +20,19 @@ function Library(){
     }
 
     return (
-        <div>
-            <h3> Open Library</h3>
-            <div  className='cardBox'>
+        <div className='libraryComp'>
+            <h3 style={{color: 'White'}}> Open Library</h3>
+            <div className='cardBox'>
                 {listSavedCard.map(name => 
-                    <Card className='car' onClick={()=> handleClick(name)}> 
-                        <Card.Title>{savedCards[name].id}</Card.Title>
+                    <Card className='card' onClick={()=> handleClick(name)}> 
+                        <Card.Title> Theme: {savedCards[name].id}</Card.Title>
                         <Card.Text> 
-                            <p> {savedCards[name].font} </p>
-                            <p> {savedCards[name].color} </p>
+                            <p> Font: {savedCards[name].font} </p>                            
+                            <p> Font Color: {savedCards[name].color} </p>
+                            <p> Background Color: {savedCards[name].background} </p>
                         </Card.Text>
                     </Card>
                 )}
-                
             </div>
         </div>
     )

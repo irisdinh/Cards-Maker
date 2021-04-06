@@ -69,25 +69,20 @@ const reducer = combineReducers(
     }
 )
 function getCard (state, action){
-
+    return {
+        ...state,
+        ...action.value
+    }
 }
 
 function setCard(state, action){
     const name = Object.keys(defaultStyles)
-    name.map(tempt => {
-        const current = defaultStyles[tempt].id
-        if (action.key == current) {
-            state=defaultStyles[tempt]
-        }
-    })
-    
-    return {
-        ...state
-    }
+    const key = name.filter(tempt => 
+        defaultStyles[tempt].id === action.key);
+    return defaultStyles[key];
 }
 
 function updateCard(state, action){
- 
     return {
         ...state,
         [action.key]: action.value

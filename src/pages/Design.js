@@ -7,7 +7,7 @@ import styleReducer from '../reducer/styleReducer'
 import Template from './Template'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useSelector, useDispatch} from 'react-redux'
-import {SetAction, UpdateAction} from '../reducer/actionReducer'
+import {SetAction, UpdateAction, GetAction} from '../reducer/actionReducer'
 import Firebase from '../firebase/Firebase'
 
 const fontArray = ["Arial", "Times New Roman", "Georgia", "Verdana", "Lucida Console"]
@@ -17,7 +17,6 @@ const backgroundArray = ["Black", "Blue", "White", "Green", "Red", "Yellow", "Sa
 const fontStyleArray= ["Normal", "Italic", "Oblique"]
 
 function Design(){
-    var [card, setCard] = useState({});
     var styleTemplate = useSelector((state) => state.style)
     const dispatch = useDispatch()
     const nameTemp = useParams().name
@@ -26,15 +25,16 @@ function Design(){
         if (nameTemp.length < 15) {
             dispatch(SetAction(nameTemp))
         } else {
-            Firebase.getCard(nameTemp).then((data) => setCard(data))
-            console.log(card)
-            console.log(styleTemplate)
-            styleTemplate = {
-                ...card
-            }
-        }
+            Firebase.getCard(nameTemp).then((data) => {
+                dispatch(GetAction(data))
+            })   
+        }  
     }, [])
+
+    console.log(styleTemplate)
     
+    
+
     return (
         <div> 
             <Row> 

@@ -14,11 +14,12 @@ export function SetAction(key) {
     return action 
 }
 
-export function GetAction(key, value) {
+export function GetAction(value) {
     const action = {
         type:'get',
-        key
+        value
     }
+    return action
 }
 
 export function UpdateAction(key, value) {
