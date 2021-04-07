@@ -1,10 +1,7 @@
-
 import React from 'react'
-import {Row, Col, Card, CardDeck, CardImg, Image} from 'react-bootstrap'
+import {Row, Col, Card, CardDeck, Image} from 'react-bootstrap'
 import './style.css';
-import {Link, useHistory, NavLink, Route, Router, useLocation} from 'react-router-dom'
-import Template from './Template'
-import styleReducer from '../reducer/styleReducer'
+import {useHistory} from 'react-router-dom'
 import Graduation from "../image/graduation.png"
 import Birthday from "../image/birthday.png"
 import Anniversary from "../image/anniversary.png"
@@ -13,7 +10,8 @@ import NewYear from "../image/newyear.png"
 function Home(){
     const imageList = [Birthday, Graduation, Anniversary, NewYear]
     const type = ["Birthday", "Graduation", "Anniversary", "NewYear"]
-    let history = useHistory();
+    let history = useHistory()
+
     function handleClick(props) {
         const name = props.name
         history.push(`/design/${name}`)    
@@ -69,8 +67,7 @@ function Home(){
                                     <p> {name} </p>
                                 </Card.Title>
                             </Card.Body>
-                            </Card>
-                            
+                            </Card>     
                         )}    
                     </CardDeck>
                     </Col>

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import ReactDOM from 'react-dom'
-import { Card, Nav, NavDropdown, Navbar, Container, Alert } from 'react-bootstrap'
-import {Link, useHistory, NavLink, Route} from 'react-router-dom'
+import {Card} from 'react-bootstrap'
+import {useHistory} from 'react-router-dom'
 import Firebase from '../firebase/Firebase'
 
 function Library(){
@@ -14,8 +13,6 @@ function Library(){
     let history = useHistory()
 
     function handleClick(name){
-        console.log(name)
-        /*history.push(`/design/one`)*/
         history.push(`/design/${name}`)
     }
 
@@ -25,6 +22,7 @@ function Library(){
             <div className='cardBox'>
                 {listSavedCard.map(name => 
                     <Card className='card' onClick={()=> handleClick(name)}> 
+                        <img src={savedCards[name].image}/>
                         <Card.Title> Theme: {savedCards[name].id}</Card.Title>
                         <Card.Text> 
                             <p> Font: {savedCards[name].font} </p>                            
@@ -37,4 +35,5 @@ function Library(){
         </div>
     )
 }
+
 export default Library

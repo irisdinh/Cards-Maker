@@ -1,37 +1,55 @@
 import React, {useRef, useState} from 'react'
-import ReactDOM from 'react-dom'
-import {Button, Row, Col, Modal, Navbar, Container, Alert } from 'react-bootstrap'
-import {Link, NavLink, Route} from 'react-router-dom'
+import {Button, Row, Col, Modal} from 'react-bootstrap'
+import {Link} from 'react-router-dom'
 import Template from './Template'
 import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
 import { useSelector } from 'react-redux'
 import Firebase from '../firebase/Firebase'
+//Get API from jsPDF and html2canvas and 
+//help from https://stackoverflow.com/questions/26481645/how-to-use-html2canvas-and-jspdf-to-export-to-pdf-in-a-proper-and-simple-way
 
-function Download(props){
+function Download(){
     const inputRef = useRef(null)
     const [modal, setModal] = useState(false)
     const style = useSelector((state) => state.style)
 
-    function printimage() {
-        const input = document.getElementById('review')
+    function printImage() {
+        const input = document.getElementById('template')
         html2canvas(input).then((canvas) => {
-            const img = canvas.toDataURL('image/png')
+            return canvas.toDataURL('image/png')
         })
     }
 
-    function saveLibrary(){
-        const savedStyle = {
+    //fix the white space in pdf
+    //https://github.com/niklasvh/html2canvas/issues/1438
+    async function saveLibrary(){
+        var savedStyle = {
             ...style,
             name : '',
             receipt :'',
-            wish : ''
+            wish : '',
         }
+        const input = document.getElementById('template')
+        await html2canvas(input,{ 
+            scrollX: -window.scrollX,
+            scrollY: -window.scrollY,
+            windowWidth: document.documentElement.offsetWidth,
+            windowHeight: document.documentElement.offsetHeight
+        }).then(async (canvas) => {
+            const current = await canvas.toDataURL('image/png', 1)
+            savedStyle = {
+                ...savedStyle,
+                image: current, 
+            }
+        })
+        
         Firebase.addtoSaveCards(savedStyle)
         setModal(false)
     }
 
     const modalName = (
+        //React Bootstrap doc
         <Modal show={modal} onHide={() => setModal(false)} centered>
         <Modal.Header closeButton>
             <Modal.Title> Ask for Permission</Modal.Title>
@@ -47,19 +65,24 @@ function Download(props){
         </Modal.Body>
         </Modal> 
     )
-
+    
+    //get help from Professor Stonedahl 
     function printpdf() {
         const input = document.getElementById('template')
-        html2canvas(input).then((canvas) => {
+        html2canvas(input, {     
+            scrollX: -window.scrollX,
+            scrollY: -window.scrollY,
+            windowWidth: document.documentElement.offsetWidth,
+            windowHeight: document.documentElement.offsetHeight
+        }).then((canvas) => {
             const img = canvas.toDataURL('image/png', 1)
             const pdf = new jsPDF({
-                unit: "in",
-                format:[5,5]
+                unit: "px",
+                format:[500,500]
             })
-            pdf.addImage(img, 'JPEG', 0, 0, 5, 5)
+            pdf.addImage(img, 'JPEG', 0, 0, 500, 500)
             pdf.save('download.pdf')
         })
-
     }
     return (
         <div>
@@ -82,8 +105,7 @@ function Download(props){
                 </div>
             </Row>
             {modalName}
-        </div>
-          
+        </div>  
     )
 }
 export default Download

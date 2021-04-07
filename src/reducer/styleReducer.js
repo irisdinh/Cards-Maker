@@ -1,5 +1,6 @@
 import {combineReducers} from 'redux'
 
+//redux tutorial in redux doc https://redux.js.org/tutorials/fundamentals/part-3-state-actions-reducers
 
 const defaultStyles = {
     type1: {
@@ -12,7 +13,7 @@ const defaultStyles = {
         name:'',
         receipt:'',
         wish:'',
-        image:''
+        image:'',
     }, 
     type2: {
         id: 'Graduation',
@@ -24,7 +25,7 @@ const defaultStyles = {
         name:'',
         receipt:'',
         wish:'',
-        image:''
+        image:'',
     }, 
     type3: {
         id: 'Anniversary',
@@ -36,7 +37,7 @@ const defaultStyles = {
         name:'',
         receipt:'',
         wish:'',
-        image:''
+        image:'',
     }, 
     type4: {
         id: 'NewYear',
@@ -48,7 +49,7 @@ const defaultStyles = {
         name:'',
         receipt:'',
         wish:'',
-        image:''
+        image:'',
     }, 
 }
 const initialStyle = {
@@ -61,13 +62,15 @@ const initialStyle = {
     name:'',
     receipt:'',
     wish:'',
-    image:''
+    image:'',
 }
+
 const reducer = combineReducers(
     {
         style: styleReducer
     }
 )
+
 function getCard (state, action){
     return {
         ...state,
@@ -88,6 +91,7 @@ function updateCard(state, action){
         [action.key]: action.value
     }
 }
+
 function styleReducer(state = initialStyle, action) {
     switch (action.type) {
         case 'update':{

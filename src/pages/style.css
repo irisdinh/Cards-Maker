@@ -1,6 +1,6 @@
 /*design*/ 
 #template {
-    margin-top: 1em;
+    margin: 0;
     width: 30em;
     height: 30em;
     padding: 1em;
@@ -43,7 +43,6 @@
     width: 30em;
     height: 30em;
     align-items: center;
-    
 }
 
 .Review {
@@ -51,6 +50,7 @@
     flex-direction: column;
     align-items: center;
 }
+
 .reviewSide {
     display: flex;
     justify-content: center;
@@ -76,7 +76,6 @@
     width: auto;
     height: 250px;   
 }
-
 
 /*library*/
 .libraryComp{

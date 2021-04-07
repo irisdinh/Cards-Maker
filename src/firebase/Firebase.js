@@ -2,6 +2,8 @@ import app from "firebase/app";
 import "firebase/database";
 import 'firebase/storage'
 
+//Firebase doc for Web 
+
 const config = {
     apiKey: "AIzaSyDX5esGF_dq9vcDyDFW7ujlBCcxjC7zb3s",
     authDomain: "cards-maker-ba2ff.firebaseapp.com",
@@ -20,8 +22,8 @@ class FirebaseClass {
     this.db = app.database();
   }
 
-  addtoSaveCards(props) {
-    this.db.ref('SaveCards').push(props)
+  async addtoSaveCards(props) {
+    await this.db.ref('SaveCards').push(props)
   }
   
   async getCard(props) {

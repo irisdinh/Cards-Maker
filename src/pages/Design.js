@@ -1,9 +1,7 @@
-import React, { useState, useEffect, useReducer } from 'react'
-import ReactDOM from 'react-dom'
-import { Dropdown, Nav, NavDropdown, Navbar, Container, Alert, Form } from 'react-bootstrap'
-import {Link, useParams, NavLink, Route} from 'react-router-dom'
+import React, {useEffect} from 'react'
+import {Form } from 'react-bootstrap'
+import {Link, useParams} from 'react-router-dom'
 import {Row, Col, InputGroup, FormControl} from 'react-bootstrap'
-import styleReducer from '../reducer/styleReducer'
 import Template from './Template'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useSelector, useDispatch} from 'react-redux'
@@ -21,7 +19,7 @@ function Design(){
     const dispatch = useDispatch()
     const nameTemp = useParams().name
 
-    useEffect(() =>{
+    useEffect(() => {
         if (nameTemp.length < 15) {
             dispatch(SetAction(nameTemp))
         } else {
@@ -33,8 +31,6 @@ function Design(){
 
     console.log(styleTemplate)
     
-    
-
     return (
         <div> 
             <Row> 
@@ -117,6 +113,7 @@ function Design(){
                         onChange={(e) => dispatch(UpdateAction('id', e.target.value))}> 
                     </FormControl>
                 </InputGroup>
+
                 <InputGroup className="formStyle">
                     <InputGroup.Prepend >
                         <InputGroup.Text>
@@ -126,6 +123,7 @@ function Design(){
                     <FormControl onChange={(e) => dispatch(UpdateAction('name', e.target.value))}> 
                     </FormControl>
                 </InputGroup>
+
                 <InputGroup className="formStyle">
                     <InputGroup.Prepend>
                         <InputGroup.Text>
@@ -135,6 +133,7 @@ function Design(){
                     <FormControl onChange={(e) => dispatch(UpdateAction('receipt', e.target.value))}> 
                     </FormControl>
                 </InputGroup>
+
                 <InputGroup className="formStyle">
                     <InputGroup.Prepend>
                         <InputGroup.Text>
@@ -144,6 +143,7 @@ function Design(){
                     <FormControl onChange={(e) => dispatch(UpdateAction('wish', e.target.value))}> 
                     </FormControl>
                 </InputGroup>
+                
             </Row>
             <Row className="buttonEnd"> 
                     <Link to={"/download"}>

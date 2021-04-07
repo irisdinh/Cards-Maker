@@ -1,7 +1,4 @@
-
-
-import React, {Component} from 'react'
-import { Nav, NavDropdown, Navbar, Container, Alert } from 'react-bootstrap'
+import React from 'react'
 import { useSelector } from 'react-redux'
 import './style.css'
 

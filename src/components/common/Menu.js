@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css';
-import { Nav, NavDropdown, Navbar, Container, Alert } from 'react-bootstrap'
-import {Link, NavLink, Route, Router, useLocation} from 'react-router-dom'
+import { Nav, Navbar} from 'react-bootstrap'
+import {useLocation} from 'react-router-dom'
 
 const routes = [
     {
