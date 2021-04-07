@@ -3,6 +3,8 @@ import "firebase/database";
 import 'firebase/storage'
 
 //Firebase doc for Web 
+//Learn to use async await
+//https://javascript.info/async-await
 
 const config = {
     apiKey: "AIzaSyDX5esGF_dq9vcDyDFW7ujlBCcxjC7zb3s",

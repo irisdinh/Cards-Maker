@@ -8,8 +8,9 @@ import { useSelector, useDispatch} from 'react-redux'
 import {SetAction, UpdateAction, GetAction} from '../reducer/actionReducer'
 import Firebase from '../firebase/Firebase'
 
+
 const fontArray = ["Arial", "Times New Roman", "Georgia", "Verdana", "Lucida Console"]
-const fontSizeArray = [14,15,16,17,18]
+const fontSizeArray = [15,16,17,18, 19, 20]
 const colorArray = ["Black", "Blue", "Red", "Green", "Yellow", "White", "Salmon"]
 const backgroundArray = ["Black", "Blue", "White", "Green", "Red", "Yellow", "Salmon", "Blue"]
 const fontStyleArray= ["Normal", "Italic", "Oblique"]
@@ -36,61 +37,62 @@ function Design(){
             <Row> 
                 <Col > 
                     <div className='selectStyle'>
-                    <Form.Group controlId = 'font'>
-                        <Form.Label style={{color:'White'}}> Font </Form.Label>
-                        <Form.Control as='select' 
-                            value={styleTemplate.font}
-                            onChange={(e) => dispatch(UpdateAction('font', e.target.value))}> 
-                            {fontArray.map(name =>
-                                <option>{name}</option>
-                            )}
-                        </Form.Control>
-                    </Form.Group>
+                        {/*React Bootstrap doc - Form*/} 
+                        <Form.Group controlId = 'font'>
+                            <Form.Label style={{color:'White'}}> Font </Form.Label>
+                            <Form.Control as='select' 
+                                value={styleTemplate.font}
+                                onChange={(e) => dispatch(UpdateAction('font', e.target.value))}> 
+                                {fontArray.map(name =>
+                                    <option>{name}</option>
+                                )}
+                            </Form.Control>
+                        </Form.Group>
 
-                    <Form.Group controlId = 'fontsize'>
-                        <Form.Label style={{color:'White'}}> Font Size</Form.Label>
-                        <Form.Control as='select'
-                            value={styleTemplate.size}
-                            onChange={(e) => dispatch(UpdateAction('size', e.target.value))}> 
-                            {fontSizeArray.map(name =>
-                                <option>{name}</option>
-                            )}
-                        </Form.Control>
-                    </Form.Group>
+                        <Form.Group controlId = 'fontsize'>
+                            <Form.Label style={{color:'White'}}> Font Size</Form.Label>
+                            <Form.Control as='select'
+                                value={styleTemplate.size}
+                                onChange={(e) => dispatch(UpdateAction('size', e.target.value))}> 
+                                {fontSizeArray.map(name =>
+                                    <option>{name}</option>
+                                )}
+                            </Form.Control>
+                        </Form.Group>
 
-                    <Form.Group controlId = 'fontstyle'>
-                        <Form.Label style={{color:'White'}}> Font Style</Form.Label>
-                        <Form.Control as='select'
-                            value={styleTemplate.fontstyle}
-                            onChange={(e) => dispatch(UpdateAction('fontstyle', e.target.value))}> 
-                            {fontStyleArray.map(name =>
-                                <option>{name}</option>
-                            )}
-                        </Form.Control>
-                    </Form.Group>
+                        <Form.Group controlId = 'fontstyle'>
+                            <Form.Label style={{color:'White'}}> Font Style</Form.Label>
+                            <Form.Control as='select'
+                                value={styleTemplate.fontstyle}
+                                onChange={(e) => dispatch(UpdateAction('fontstyle', e.target.value))}> 
+                                {fontStyleArray.map(name =>
+                                    <option>{name}</option>
+                                )}
+                            </Form.Control>
+                        </Form.Group>
 
-                    <Form.Group controlId = 'color'>
-                        <Form.Label style={{color:'White'}}> Color </Form.Label>
-                        <Form.Control as='select'
-                            value={styleTemplate.color}
-                            onChange={(e) => dispatch(UpdateAction('color', e.target.value))}> 
-                            {colorArray.map(name =>
-                                <option>{name}</option>
-                            )}
+                        <Form.Group controlId = 'color'>
+                            <Form.Label style={{color:'White'}}> Color </Form.Label>
+                            <Form.Control as='select'
+                                value={styleTemplate.color}
+                                onChange={(e) => dispatch(UpdateAction('color', e.target.value))}> 
+                                {colorArray.map(name =>
+                                    <option>{name}</option>
+                                )}
 
-                        </Form.Control>
-                    </Form.Group>
-                    
-                    <Form.Group controlId = 'background'>
-                        <Form.Label style={{color:'White'}}> Background Color </Form.Label>
-                        <Form.Control as='select'
-                            value={styleTemplate.background}
-                            onChange={(e) => dispatch(UpdateAction('background', e.target.value))}> 
-                            {backgroundArray.map(name =>
-                                <option>{name}</option>
-                            )}
-                        </Form.Control>
-                    </Form.Group>
+                            </Form.Control>
+                        </Form.Group>
+                        
+                        <Form.Group controlId = 'background'>
+                            <Form.Label style={{color:'White'}}> Background Color </Form.Label>
+                            <Form.Control as='select'
+                                value={styleTemplate.background}
+                                onChange={(e) => dispatch(UpdateAction('background', e.target.value))}> 
+                                {backgroundArray.map(name =>
+                                    <option>{name}</option>
+                                )}
+                            </Form.Control>
+                        </Form.Group>
                     </div>
                 </Col>
                 <Col> 
@@ -102,6 +104,7 @@ function Design(){
                 </Col>
             </Row>
             <Row>
+                {/*React Bootstrap doc - Form*/}
                 <InputGroup className="formStyle">
                     <InputGroup.Prepend >
                         <InputGroup.Text>

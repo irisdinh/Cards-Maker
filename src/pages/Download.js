@@ -6,8 +6,7 @@ import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
 import { useSelector } from 'react-redux'
 import Firebase from '../firebase/Firebase'
-//Get API from jsPDF and html2canvas and 
-//help from https://stackoverflow.com/questions/26481645/how-to-use-html2canvas-and-jspdf-to-export-to-pdf-in-a-proper-and-simple-way
+
 
 function Download(){
     const inputRef = useRef(null)
@@ -21,7 +20,9 @@ function Download(){
         })
     }
 
-    //fix the white space in pdf
+    //get API from jsPDF and html2canvas and 
+    //help from https://stackoverflow.com/questions/26481645/how-to-use-html2canvas-and-jspdf-to-export-to-pdf-in-a-proper-and-simple-way
+    //fix the white space in image and pdf
     //https://github.com/niklasvh/html2canvas/issues/1438
     async function saveLibrary(){
         var savedStyle = {
@@ -66,7 +67,7 @@ function Download(){
         </Modal> 
     )
     
-    //get help from Professor Stonedahl 
+    //get help from Professor Stonedahl for square card
     function printpdf() {
         const input = document.getElementById('template')
         html2canvas(input, {     
@@ -97,9 +98,6 @@ function Download(){
             </Row>
             <Row className='reviewSide'> 
                 <div className="buttonEnd">
-                    <Link to={"/design"}>
-                        <button className="buttonStyle" href="/design"> Go Back</button>
-                    </Link> 
                     <button className="buttonStyle" onClick = {() => printpdf()}> Download as PDF</button>
                     <button className="buttonStyle" onClick = {() => setModal(true)}> Save to Open Library</button>
                 </div>

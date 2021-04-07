@@ -15,9 +15,10 @@ export default function Template(props) {
                 fontStyle: style.fontstyle,
             }}>
                 <p className='from' style={{fontSize: style.size + 'px'}}> From {style.name}</p>
-                <h4> Happy {style.id}</h4>
                 <p> </p> 
                 <p style={{fontSize: style.size + 'px'}}> To {style.receipt}</p>
+                <p style={{fontSize: style.size * 1.5 + 'px'}}> Happy {style.id}</p>
+                
                 <p> </p>
                 <p style={{fontSize: style.size + 'px'}}> {style.wish} </p>
                     

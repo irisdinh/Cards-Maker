@@ -38,6 +38,7 @@
     border-radius: 15px;
     border-color: gray;
 }
+
 /*download*/
 .reviewBox {
     width: 30em;
@@ -99,7 +100,7 @@
 
 /*template*/
 .from{
-    margin-top: 10em;
+    margin-top: 30%;
 }
 
 

@@ -8,7 +8,6 @@ import Download from './pages/Download'
 import Footer from './components/common/Footer';
 import Menu from './components/common/Menu';
 
-//
 function App() {
   return (
     <div className="App">

@@ -1,3 +1,5 @@
+//help from Trang
+
 export function SetAction(key) {
     var action = {}
     if (key == 'New') {

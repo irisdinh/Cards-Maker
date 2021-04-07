@@ -1,6 +1,7 @@
 import {combineReducers} from 'redux'
 
 //redux tutorial in redux doc https://redux.js.org/tutorials/fundamentals/part-3-state-actions-reducers
+//help from Trang
 
 const defaultStyles = {
     type1: {
@@ -52,6 +53,7 @@ const defaultStyles = {
         image:'',
     }, 
 }
+
 const initialStyle = {
     id: '',
     color: 'White',
